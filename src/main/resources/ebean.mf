@@ -1,0 +1,4 @@
+entity-packages: com.conurets.EmployeeInformationSystem.model
+transactional-packages: com.conurets.EmployeeInformationSystem
+querybean-packages: com.conurets.EmployeeInformationSystem
+profile-location: true

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http:/www.thymeleaf.org">
+<head th:replace="common::head"></head>
+<body ng-app="app" ng-controller="EmployeesController as ec">
+
+<div th:replace="common::header"></div>
+
+<div class="container">
+    <table id="employeesTable" class="table table-responsive table-bordered table-striped table-hover">
+        <thead>
+        <tr><th colspan="7" class="text-center">Employees</th></tr>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Cnic</th>
+            <th>Age</th>
+            <th>Date of birth</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tfoot>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Cnic</th>
+            <th>Age</th>
+            <th>Date of birth</th>
+            <th>Action</th>
+        </tr>
+        </tfoot>
+        <tbody>
+        <tr ng-repeat="employee in ec.employees">
+            <th>{{employee.id}}</th>
+            <td>{{employee.name}}</td>
+            <td>{{employee.role}}</td>
+            <td>{{employee.cnic}}</td>
+            <td>{{employee.age}}</td>
+            <td>{{employee.dob | date:'yyyy-MM-dd'}}</td>
+           <!-- <td>
+                <button type="button" class="btn btn-primary" ng-click="ec.editEmployee(employee.id)">Edit</button>
+                <button type="button" class="btn btn-danger" ng-click="ec.deleteEmployee(employee.id)">Delete</button>
+            </td>-->
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div th:replace="common::footer"></div>
+
+<div th:replace="common::scriptSection"></div>
+</body>
+</html>

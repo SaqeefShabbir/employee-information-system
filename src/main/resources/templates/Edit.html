@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http:/www.thymeleaf.org">
+<head th:replace="common::head"></head>
+<body ng-app="app" ng-controller="EmployeesController as ec">
+<div th:replace="common::header"></div>
+
+<div class="container">
+    <div class="jumbotron">
+        <h2>Employee Information System</h2>
+        <p>This is a platform for employees management.</p>
+        <p>It uses spring boot, thymeleaf, postgreSQL, bootstrap, spring initializer, java, tomcat, datatables and
+            angular.</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="well">
+        <h5><i class="fas fa-check-circle"></i> Employee ID:  <span ng-bind="employee.id"></span></span></h5>
+    </div>
+</div>
+
+<div id="myContainer" class="container">
+    <form>
+        <div class="row">
+            <h2>Edit Employee</h2>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter name" ng-model="employee.name">
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <label for="role">Role</label>
+                    <input type="text" class="form-control" id="role" placeholder="Enter role" ng-model="employee.role">
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <label for="role">cnic</label>
+                    <input type="text" class="form-control" id="cnic" placeholder="Enter cnic" ng-model="employee.cnic">
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <label for="role">Age</label>
+                    <input type="number" class="form-control" id="age" min="0" max="200" placeholder="Enter age"
+                           ng-model="employee.age">
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <label for="dob">Date of birth</label>
+                    <input type="date" class="form-control" id="dob" placeholder="Enter date of birth"
+                           ng-model="employee.dob">
+                </div>
+            </div>
+            <div class="col-lg-4" style="margin-top: 24px;">
+                <div class="form-group">
+                    <button type="button" class="btn btn-success" ng-click="ec.updateEmployee(employee)">Update</button>
+                    <button type="button" class="btn btn-primary" ng-click="ec.goToHome()">Home</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div th:replace="common::footer"></div>
+
+<div th:replace="common::scriptSection"></div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#cnic').mask('99999-9999999-9');
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var url = window.location.pathname;
+        var attributes = url.split("/");
+        var id = attributes[3];
+
+        var scope = angular.element(document.getElementById('myContainer')).scope();
+
+        scope.setEmployee(id);
+    });
+</script>
+</body>
+</html>
